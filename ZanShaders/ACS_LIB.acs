@@ -1,0 +1,11 @@
+//you can use this function to check if the shader is loaded, better kept in
+//a CLIENTSIDE script.
+function bool ZanShadersLoaded (void)
+{
+	str lname = "SHADER_ZANSHADERS_LOADED";
+	str lang = StrParam(l:lname);
+	
+	if(stricmp(lang,lname) == 0)
+		return FALSE;
+	return TRUE;
+}

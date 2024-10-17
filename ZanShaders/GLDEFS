@@ -1,0 +1,11 @@
+HardwareShader texture SMGWATER
+{
+	Shader "shaders/smg_water.fp"
+	Speed 1.0
+}
+
+HardwareShader texture SMGWTXLU
+{
+	Shader "shaders/smg_water_xlu.fp"
+	Speed 1.0
+}

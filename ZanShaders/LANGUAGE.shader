@@ -1,0 +1,3 @@
+[default]
+
+SHADER_ZANSHADERS_LOADED = "1";
