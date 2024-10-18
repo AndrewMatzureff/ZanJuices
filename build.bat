@@ -17,7 +17,7 @@ call ".\tasks\%task_name%.bat" "." "%task_args%"
 
 rem Alert the caller to whether the task succeeded or failed.
 if %ERRORLEVEL%==0 (
-    call:alert TASK "%task_name%" SUCCESSFUL!
+    call:alert TASK "%task_name%" SUCCEEDED!
 ) else (
     call:alert TASK "%task_name%" FAILED! Task corresponding to "%task_name%.bat" failed with error level: %ERRORLEVEL%. Is there a valid script defined in ".\tasks\%task_name%.bat"?
 )

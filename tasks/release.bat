@@ -8,16 +8,16 @@ if "%1"=="" (
 )
 
 rem Store the directory path passed as the first argument.
-set "project_root=%~1"
-set "src_dir=%project_root%\src"
+set "module_root=%~1"
+set "src_dir=%module_root%\src"
 
 rem Check if the provided directory exists.
-if not exist "%project_root%" (
-    call:alert The directory "%project_root%" does not exist.
+if not exist "%module_root%" (
+    call:alert The directory "%module_root%" does not exist.
     exit /b 1
 )
 
-call:alert Compiling archive(s) from "%project_root%"...
+call:alert Compiling archive(s) from "%module_root%"...
 
 rem Path to archiving application executable.
 set "archiver_exe=C:\Program Files\7-Zip\7z"
@@ -25,20 +25,20 @@ set "archiver_exe=C:\Program Files\7-Zip\7z"
 call:alert Generating artifacts...
 
 rem Retrieve directory name of the provided path.
-for %%F in ("%project_root%") do (
+for %%F in ("%module_root%") do (
     set "dir_name=%%~nxF"
 )
 
 rem Set package-common output path relative to the parent of the provided directory.
-set "output=%project_root%\..\release\%dir_name%"
+set "output=%module_root%\..\release\%dir_name%"
 
 rem Check if the output directory exists.
 if not exist "%output%" (
     mkdir "%output%" && call:alert Created output directory, "%output%".
 )
 
-rem Create shortcut to release-artifacts from project root.
-call "%project_root%\create-folder-shortcut" "%output%" "%project_root%" "release"
+rem Create shortcut to release-artifacts from module root.
+call "%module_root%\create-folder-shortcut" "%output%" "%module_root%" "release"
 
 set div================================================================================
 
