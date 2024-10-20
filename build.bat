@@ -12,7 +12,7 @@ set "task_args=%*"
 call set "task_args=%%task_args:*%1=%%"
 
 rem Initiate desired task script.
-echo: && echo [BUILD] INITIATING TASK "%task_name%" WITH ARGUMENTS "%task_args%"...
+echo: && call:alert INITIATING TASK "%task_name%" WITH ARGUMENTS "%task_args%"...
 call ".\tasks\%task_name%.bat" "." "%task_args%"
 
 rem Alert the caller to whether the task succeeded or failed.
