@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal enabledelayedexpansion
 echo:
 
 rem Check if an argument was passed.
@@ -31,21 +31,21 @@ rem If no source archives are specified then attempt to extract any .pk3 found i
 if "%source_archives%"=="" (
 
 	rem Use FOR to expand the relative path into an absolute path.
-	for %%F in ("%module_root%\..\release\%dir_name%") do set "source_archives_dir=%%~fF"
+	for %%F in ("%module_root%\..\release\!dir_name!") do set "source_archives_dir=%%~fF"
 	
-	call:alert No source archives specified; searching for sources in "%source_archives_dir%" by default...
+	call:alert No source archives specified; searching for sources in "!source_archives_dir!" by default...
 
 	rem If any archives (not necessarily all) are resolved at all then proceed to the happy path.
-	for %%F in ("%source_archives_dir%\*.pk3") do (
+	for %%F in ("!source_archives_dir!\*.pk3") do (
 		goto :matched_archives
 	)
 	
 	rem If no archives are resolved at all then alert and exit immediately.
-	call:alert Found no archives matching "%source_archives_dir%\*.pk3"!
+	call:alert Found no archives matching "!source_archives_dir!\*.pk3"!
 	exit /b 1
 	
 	:matched_archives
-	set "source_archives=%source_archives_dir%\*.pk3"
+	set "source_archives=!source_archives_dir!\*.pk3"
 	
 	rem Apparently the else() block is still evaluated after triggering the previous goto...?
 	goto :exit_if_else_block
@@ -72,6 +72,12 @@ call:alert Attempting to extract sources to "%src_dir%"...
 
 rem Extract all resolved archives.
 for %%F in (%source_archives%) do (
+
+	rem TODO: backup existing sources before removing.
+	if exist "%src_dir%\%%~nF" (
+		rmdir /s "%src_dir%\%%~nF"
+	)
+
 	(call:extract "%%F" "%src_dir%") || (call:alert Could not extract sources from "%%F"!) || exit /b 1
 )
 
