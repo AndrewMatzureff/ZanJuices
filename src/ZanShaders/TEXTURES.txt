@@ -1,0 +1,27 @@
+Texture FWATER1, 256, 256
+{
+   XScale 1
+   YScale 1
+   Patch smgwater, 0, 0
+}
+
+Texture FWATER2, 256, 256
+{
+   XScale 1
+   YScale 1
+   Patch smgwater, 0, 0
+}
+
+Texture FWATER3, 256, 256
+{
+   XScale 1
+   YScale 1
+   Patch smgwater, 0, 0
+}
+
+Texture FWATER4, 256, 256
+{
+   XScale 1
+   YScale 1
+   Patch smgwater, 0, 0
+}

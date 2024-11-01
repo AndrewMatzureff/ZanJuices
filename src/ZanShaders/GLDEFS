@@ -1,11 +1,23 @@
-HardwareShader texture SMGWATER
+HardwareShader texture FWATER1
 {
-	Shader "shaders/smg_water.fp"
-	Speed 1.0
+	Shader "shaders/specular4.fp"
+	Speed 2.0
 }
 
-HardwareShader texture SMGWTXLU
+HardwareShader texture FWATER2
 {
-	Shader "shaders/smg_water_xlu.fp"
-	Speed 1.0
+	Shader "shaders/specular4.fp"
+	Speed 2.0
+}
+
+HardwareShader texture FWATER3
+{
+	Shader "shaders/specular4.fp"
+	Speed 2.0
+}
+
+HardwareShader texture FWATER4
+{
+	Shader "shaders/specular4.fp"
+	Speed 2.0
 }
